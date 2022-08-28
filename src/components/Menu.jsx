@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-
-function Menu({children}) {
-    const StyledMenu = styled.ul`
+const StyledMenu = styled.ul`
+        height:100%;
         width: 36rem;
         display: flex;
         align-items: center;
         list-style-type: none;
+        margin:0;
     `
+function Menu({children}){
   return (
     <StyledMenu>
         {children}
@@ -15,4 +16,4 @@ function Menu({children}) {
   )
 }
 
-export default Menu
+export default Menu; 

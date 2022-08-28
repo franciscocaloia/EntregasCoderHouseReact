@@ -2,24 +2,28 @@ import React from 'react'
 import styled from 'styled-components'
 import MenuItem from './MenuItem'
 
-const StyledMenuDropDown = styled.ul`
-    ${MenuItem}{
-        display:none;
-    }
-    &:hover {
-        ${MenuItem}{
-            display:block;
-            position: absolute;
-        }
-       
-    }
+const StyledMenuDropDown = styled.div` 
+    
+`
+const HiddenMenu = styled.ul`
+display:none;
+${StyledMenuDropDown}:hover &{
+    display:block;
+    position:absolute;
+    padding:0;
+    list-style-type:none;
+    background-color: #066a96;
+}
 `
 
-const MenuDropDown = ({children}) => {
+const MenuDropDown = ({content,children}) => {
   return (
-    <StyledMenuDropDown>
-        {children}
-    </StyledMenuDropDown>
+        <StyledMenuDropDown>
+        <MenuItem content={content} URL="/#"></MenuItem>
+        <HiddenMenu>
+            {children}
+        </HiddenMenu>
+        </StyledMenuDropDown>
   )
 }
 

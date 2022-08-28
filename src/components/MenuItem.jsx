@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const MenuItem = ({content,URL}) => {
     const StyledMenuItem = styled.li`
-         width: 25%;
+         width: 9rem;
     `
     const StyledContent = styled.a`
         font-size: 1rem;
@@ -11,11 +11,15 @@ const MenuItem = ({content,URL}) => {
         font-weight: 600;
         text-transform: uppercase;
         text-align: center;
+        color:#eee;
         display: block;
         padding: 1rem;
         text-decoration: none;
         color: $white-color;
         transition: all 0.5s ease 0s;
+        &:hover{
+          background-color:#274874;
+        }
     `
   return (
     <StyledMenuItem>
