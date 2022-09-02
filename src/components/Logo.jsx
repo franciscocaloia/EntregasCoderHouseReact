@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../assets/arduino.svg'
 const StyledH1= styled.h1`
     color:#eee;
     line-height: 3rem;
@@ -14,7 +13,7 @@ const StyledDiv = styled.div`
 const Logo = () => {
   return (
     <StyledDiv>
-        <img src={logo} alt="logoarduino"></img>
+        <img src="./assets/arduino.svg" alt="logoarduino"></img>
         <StyledH1>Kloi<b>Arduino</b></StyledH1>
     </StyledDiv>
   )

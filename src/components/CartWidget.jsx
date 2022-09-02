@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import cart from '../assets/cart.svg'
+
 
 const CartWidget = ({URL}) => {
     const StyledMenuItem = styled.li`
@@ -27,7 +27,7 @@ const StyledContent = styled.a`
 `
   return (
     <StyledMenuItem>
-        <StyledContent href={URL}><StyledImg src={cart}></StyledImg></StyledContent>
+        <StyledContent href={URL}><StyledImg src="./assets/cart.svg"></StyledImg></StyledContent>
     </StyledMenuItem>
   )
 }
