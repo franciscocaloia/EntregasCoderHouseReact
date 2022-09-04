@@ -1,20 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
 import MenuItem from './MenuItem'
+import {HiddenMenu,StyledMenuDropDown} from '../Styled/StyledMenuDropDown.styled'
 
-const StyledMenuDropDown = styled.div` 
-    
-`
-const HiddenMenu = styled.ul`
-display:none;
-${StyledMenuDropDown}:hover &{
-    display:block;
-    position:absolute;
-    padding:0;
-    list-style-type:none;
-    background-color: #066a96;
-}
-`
 
 const MenuDropDown = ({content,children}) => {
   return (
