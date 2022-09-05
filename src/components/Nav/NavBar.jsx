@@ -1,23 +1,11 @@
 import React from 'react'
-import styled from "styled-components";
 import CartWidget from './CartWidget';
-import Container from './Container';
+import Container from '../Container';
 import Logo from './Logo';
 import MenuDropDown from './MenuDropDown';
 import MenuItem from './MenuItem';
+import { StyledMenu, StyledNavBar } from '../Styled/StyledNavBar.styled';
 
-const StyledNavBar = styled.nav`
-    background-color: #066a96;
-    height: 4rem;
-`
-const StyledMenu = styled.ul`
-    height:100%;
-    width: 36rem;
-    display: flex;
-    align-items: center;
-    list-style-type: none;
-    margin:0;
-    `
 
 
 const NavBar = ()=>{

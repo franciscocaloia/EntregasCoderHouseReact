@@ -1,24 +1,24 @@
-import "./App.css";
-import NavBar from "./components/NavBar.jsx";
-// import { useState } from "react";
+import NavBar from "./components/Nav/NavBar.jsx";
 import ItemListContainer from "./components/ItemListContainer";
+import { ThemeProvider } from "styled-components";
 
 function App() {
-  /*const [counter, setCounter] = useState(0);
-  console.log(useState(0));
-
-  const handleClick = () => {
-    setCounter(counter + 1);
-  }; 
-*/
-
+  const theme = {
+    colors:{
+      primary:'#066a96',
+      primaryDark:'#274874',
+      dark:'#333',
+      white:'#eee',
+      light:'c5c5c5'
+    }
+  }
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <>
       <NavBar />
-      <ItemListContainer content="Catalogo de productos"></ItemListContainer>
-      {/* <h1>{counter}</h1>
-      <button onClick={handleClick}>incrementar</button> */}
-    </>
+      <ItemListContainer content="Catalogo de productos"/>
+      </>
+    </ThemeProvider>
   );
 }
 
