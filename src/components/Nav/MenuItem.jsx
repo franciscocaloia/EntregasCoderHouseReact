@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledMenuItem } from '../Styled/StyledMenuItem.styled'
+import { StyledMenuItem } from '../Styled/StyledNavBar.styled'
 const MenuItem = ({content,URL}) => {
    
   return (

@@ -1,17 +1,16 @@
 import React from 'react'
 import CartWidget from './CartWidget';
-import Container from '../Container';
 import Logo from './Logo';
 import MenuDropDown from './MenuDropDown';
 import MenuItem from './MenuItem';
-import { StyledMenu, StyledNavBar } from '../Styled/StyledNavBar.styled';
+import { StyledMenu, StyledNavBar, StyledNavContainer} from '../Styled/StyledNavBar.styled';
 
 
 
 const NavBar = ()=>{
     return (
     <StyledNavBar>
-        <Container>
+        <StyledNavContainer>
             <a style={{textDecoration:'none'}} href="../index.html">
                 <Logo/>
             </a>
@@ -24,7 +23,7 @@ const NavBar = ()=>{
                     <MenuItem content={"Nosotros"} URL="/#"></MenuItem>
                     <MenuItem content="contatco" URL="/#"></MenuItem>
             </StyledMenu>
-        </Container>
+        </StyledNavContainer>
     </StyledNavBar>
   )
 }

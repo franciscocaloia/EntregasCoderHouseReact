@@ -1,6 +1,6 @@
 import React from 'react'
 import MenuItem from './MenuItem'
-import {HiddenMenu,StyledMenuDropDown} from '../Styled/StyledMenuDropDown.styled'
+import {HiddenMenu,StyledMenuDropDown} from '../Styled/StyledNavBar.styled'
 
 
 const MenuDropDown = ({content,children}) => {

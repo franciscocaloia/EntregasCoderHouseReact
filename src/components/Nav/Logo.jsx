@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyledLogo } from '../Styled/StyledLogo.styled'
+import { StyledLogo } from '../Styled/StyledNavBar.styled'
 
 
 const Logo = () => {

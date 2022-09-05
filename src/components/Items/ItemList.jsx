@@ -1,17 +1,13 @@
 import React from 'react'
-import styled from 'styled-components';
 import Item from './Item';
+import { StyledItemList } from '../Styled/StyledItems.styled';
 
-const StyledGridContainer = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem; 
-`
+
 const ItemList = ({products}) => {
   return (
-    <StyledGridContainer>
+    <StyledItemList columns={`repeat(4,1fr)`} gap={`10px`}>
         {products.length?products.map((prod)=><Item initial="0" key={prod.id} {...prod} />):<h3>Cargando...</h3>}
-    </StyledGridContainer>
+    </StyledItemList>
   )
 }
 

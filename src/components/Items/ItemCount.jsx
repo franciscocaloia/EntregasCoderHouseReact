@@ -1,49 +1,8 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
-const StyledUnitsContainer = styled.div`
-    display:flex;
-    justify-content:space-around;
-    max-width:10rem;
-    width:60%;
-`
-const StyledButton = styled.button`
-    background-color:#066a96;
-    border:none;
-    height:1.5rem;
-    width:2rem;
-    border-radius:0.5rem;
-    font-weight:bold;
-    font-size:1rem;
-    color:#eee;
-    cursor:pointer;
-    &:hover{
-        background-color: #274874;
-    }
-    &:disabled{
-        background-color:#4dc9ff;
-        cursor:auto;
-    }
-`
+import { StyledAddButton, StyledUnitsContainer } from '../Styled/StyledItems.styled';
+import { StyledButton } from '../Styled/StyledUtils.styled'
 
-const StyledAddButton = styled.button`
-background-color:#066a96;
-border:none;
-margin:0.5rem;
-height:1.5rem;
-width:90%;
-border-radius:0.5rem;
-font-weight:bold;
-font-size:1rem;
-color:#eee;
-cursor:pointer;
-&:hover{
-    background-color: #274874;
-}
-&:disabled{
-    background-color:#4dc9ff;
-    cursor:auto;
-}
-`
+
 const ItemCount = ({stock,initial,onAdd}) => {
     const [actualStock, setActualStock] = useState(stock)
     const [units, setUnits] = useState(parseInt(initial));

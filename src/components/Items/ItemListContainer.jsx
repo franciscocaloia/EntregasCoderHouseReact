@@ -1,15 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
 import ItemList from './ItemList'
-import dataJSON from '../products.json' //https://github.com/public-apis/public-apis
-
-
-const StyledContainer = styled.div`
-    height:100%;
-    max-width: 100rem;
-    width: 90%;
-    margin: 0 auto;
-`
+import dataJSON from '../../products.json' //https://github.com/public-apis/public-apis
+import { StyledContainer } from '../Styled/StyledUtils.styled'
 
 const ItemListContainer = ({content}) => {
   const [products, setProducts] = useState([]);
