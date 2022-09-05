@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components'  
 const StyledH1= styled.h1`
     color:#eee;
     line-height: 3rem;
