@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { StyledButton, StyledGridContainer } from "./StyledUtils.styled";
+import { StyledButton, StyledContainer, StyledGridContainer } from "./StyledUtils.styled";
 
 export const StyledItem = styled.div`
-    padding:1rem;
     border-radius: 0.5rem;
     box-shadow:0 0 0.5rem  rgba(0,0,0,0.25);
     background-color:#fff;
@@ -18,6 +17,7 @@ export const StyledItem = styled.div`
 `
 
 export const StyledItemList = styled(StyledGridContainer)`
+    margin:1rem;
     @media (max-width:1440px) {
       grid-template-columns: repeat(3,1fr);
     }
@@ -27,6 +27,9 @@ export const StyledItemList = styled(StyledGridContainer)`
     @media (max-width:560px) {
       grid-template-columns:1fr;
     }
+`
+
+export const StyledItemListContainer = styled(StyledContainer)`
 `
 
 export const StyledAddButton = styled(StyledButton)`
@@ -42,4 +45,10 @@ export const StyledUnitsContainer = styled.div`
     justify-content:space-between;
     max-width:10rem;
     width:60%;
+`
+export const StyledItemImg =styled.img`
+    height: 15rem;
+    max-width:20rem;
+    border-radius:0.5rem;
+    object-fit: cover;  
 `

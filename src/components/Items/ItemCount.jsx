@@ -7,33 +7,32 @@ const ItemCount = ({stock,initial,onAdd}) => {
     const [actualStock, setActualStock] = useState(stock)
     const [units, setUnits] = useState(parseInt(initial));
     const handleIncrease = ()=>{
-        if (actualStock > 0 ) {
+        if(units<actualStock){
             setUnits(units+1);
         }
     }
     const handleDecrease = ()=>{
-        if(units>0){
+        if(units>initial){
             setUnits(units-1);
         }
     }
     const handleAdd = ()=>{
-        if (units<=actualStock) {
+        if (actualStock) {
             onAdd(units);
             setActualStock(actualStock-units);
-            setUnits(0);
+            setUnits(initial);
         }else{
-             console.log(`Solo quedan ${actualStock} unidades en stock`);
+             console.log(`No queda stock de este producto`);
         }
-       
     }
   return (
         <>
-        <StyledUnitsContainer>
-            <StyledButton disabled={!units}  onClick={handleDecrease}>-</StyledButton>
-            <span>{units}</span>
-            <StyledButton disabled={!actualStock} onClick={handleIncrease}>+</StyledButton>
-        </StyledUnitsContainer>
-            <StyledAddButton onClick={handleAdd}>Agregar al carrito</StyledAddButton>
+            <StyledUnitsContainer>
+                <StyledButton disabled={units===initial}  onClick={handleDecrease}>-</StyledButton>
+                <span>{units}</span>
+                <StyledButton disabled={units>=actualStock} onClick={handleIncrease}>+</StyledButton>
+            </StyledUnitsContainer>
+            <StyledAddButton disabled={!actualStock} onClick={handleAdd}>Agregar al carrito</StyledAddButton>
         </>
   )
 }
