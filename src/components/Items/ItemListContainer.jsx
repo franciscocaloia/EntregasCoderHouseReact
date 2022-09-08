@@ -15,6 +15,7 @@ const ItemListContainer = ({ content }) => {
         }
       }, 2000);
     });
+
   useEffect(() => {
     getProducts(dataJSON)
       .then((res) => {
