@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { StyledContainer } from "./StyledUtils.styled";
 
 export const StyledNavBar = styled.nav`
+  position: relative;
   background-color: #066a96;
   height: 4rem;
+  z-index: 20;
 `;
 export const StyledMenu = styled.ul`
   height: 100%;
@@ -16,13 +18,16 @@ export const StyledMenu = styled.ul`
 export const StyledMenuItem = styled.li`
   width: 9rem;
   a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
     font-size: 1rem;
     line-height: 2rem;
     font-weight: 600;
     text-transform: uppercase;
     text-align: center;
     color: #eee;
-    display: block;
     padding: 1rem;
     text-decoration: none;
     color: #eee;

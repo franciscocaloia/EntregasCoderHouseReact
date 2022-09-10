@@ -1,20 +1,18 @@
-import ItemCount from "./ItemCount";
-import { StyledItem, StyledItemImg } from "../Styled/StyledItems.styled";
+import {
+  StyledItem,
+  StyledItemImg,
+  StyledItemLink,
+} from "../styled/StyledItems.styled";
 
-const Item = ({ name, price, img }) => {
+const Item = ({ id, name, price, img }) => {
   return (
-    <StyledItem>
-      <StyledItemImg src={img} />
-      <h3>{name}</h3>
-      <h4>{price}</h4>
-      <ItemCount
-        stock={10}
-        initial={1}
-        onAdd={(units) => {
-          console.log(`Has comprado ${units} unidades del producto ${name}`);
-        }}
-      />
-    </StyledItem>
+    <StyledItemLink to={`/items/${id}`}>
+      <StyledItem>
+        <StyledItemImg src={img} />
+        <h2>{name}</h2>
+        <span>${price}</span>
+      </StyledItem>
+    </StyledItemLink>
   );
 };
 

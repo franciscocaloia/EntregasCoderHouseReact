@@ -1,7 +1,9 @@
-import NavBar from "./components/Nav/NavBar.jsx";
-import ItemListContainer from "./components/Items/ItemListContainer";
+import NavBar from "./components/nav/NavBar.jsx";
+import ItemListContainer from "./components/items/ItemListContainer";
 import { ThemeProvider } from "styled-components";
-import GlobalStyle from "./components/Styled/GlobalStyles.jsx";
+import GlobalStyle from "./components/styled/GlobalStyles.jsx";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import ItemDetailContainer from "./components/items/ItemDetailContainer.jsx";
 
 function App() {
   const theme = {
@@ -12,15 +14,25 @@ function App() {
       white: "#eee",
       light: "c5c5c5",
     },
+    screenSize: {
+      desktop: "1440px",
+      large: "1152px",
+      tablet: "768px",
+      mobile: "560px",
+    },
   };
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <GlobalStyle />
         <NavBar />
-        <ItemListContainer content="Catalogo de productos" />
-      </>
-    </ThemeProvider>
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/category/:id" element={<ItemListContainer />} />
+          <Route path="/items/:id" element={<ItemDetailContainer />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

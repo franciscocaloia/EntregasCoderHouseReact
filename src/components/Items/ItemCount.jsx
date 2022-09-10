@@ -1,40 +1,45 @@
-import React, { useState } from 'react'
-import { StyledAddButton, StyledUnitsContainer } from '../Styled/StyledItems.styled';
-import { StyledButton } from '../Styled/StyledUtils.styled'
+import React, { useState } from "react";
+import {
+  StyledAddButton,
+  StyledItemCount,
+  StyledUnitsContainer,
+} from "../styled/StyledItems.styled";
+import { StyledButton } from "../styled/StyledUtils.styled";
 
-
-const ItemCount = ({stock,initial,onAdd}) => {
-    const [actualStock, setActualStock] = useState(stock)
-    const [units, setUnits] = useState(parseInt(initial));
-    const handleIncrease = ()=>{
-        if(units<actualStock){
-            setUnits(units+1);
-        }
+const ItemCount = ({ stock, initial, onAdd }) => {
+  const [units, setUnits] = useState(parseInt(initial));
+  const handleIncrease = () => {
+    if (units < stock) {
+      setUnits(units + 1);
     }
-    const handleDecrease = ()=>{
-        if(units>initial){
-            setUnits(units-1);
-        }
+  };
+  const handleDecrease = () => {
+    if (units > initial) {
+      setUnits(units - 1);
     }
-    const handleAdd = ()=>{
-        if (actualStock) {
-            onAdd(units);
-            setActualStock(actualStock-units);
-            setUnits(initial);
-        }else{
-             console.log(`No queda stock de este producto`);
-        }
+  };
+  const handleAdd = () => {
+    if (stock) {
+      onAdd(units);
+      setUnits(initial);
     }
+  };
   return (
-        <>
-            <StyledUnitsContainer>
-                <StyledButton disabled={units===initial}  onClick={handleDecrease}>-</StyledButton>
-                <span>{units}</span>
-                <StyledButton disabled={units>=actualStock} onClick={handleIncrease}>+</StyledButton>
-            </StyledUnitsContainer>
-            <StyledAddButton disabled={!actualStock} onClick={handleAdd}>Agregar al carrito</StyledAddButton>
-        </>
-  )
-}
+    <StyledItemCount>
+      <StyledUnitsContainer>
+        <StyledButton disabled={units === initial} onClick={handleDecrease}>
+          -
+        </StyledButton>
+        <span>{units}</span>
+        <StyledButton disabled={units >= stock} onClick={handleIncrease}>
+          +
+        </StyledButton>
+      </StyledUnitsContainer>
+      <StyledAddButton disabled={!stock} onClick={handleAdd}>
+        Agregar al carrito
+      </StyledAddButton>
+    </StyledItemCount>
+  );
+};
 
-export default ItemCount
+export default ItemCount;

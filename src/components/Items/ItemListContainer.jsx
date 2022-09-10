@@ -1,21 +1,11 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
 import dataJSON from "../../products.json"; //https://github.com/public-apis/public-apis
-import { StyledContainer } from "../Styled/StyledUtils.styled";
+import { StyledContainer } from "../styled/StyledUtils.styled";
+import { getProducts } from "../../utils/Utils";
 
-const ItemListContainer = ({ content }) => {
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
-  const getProducts = (data) =>
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        if (data) {
-          resolve(data);
-        } else {
-          reject("error");
-        }
-      }, 2000);
-    });
-
   useEffect(() => {
     getProducts(dataJSON)
       .then((res) => {
@@ -27,7 +17,7 @@ const ItemListContainer = ({ content }) => {
   }, []);
   return (
     <StyledContainer>
-      <h2>{content}</h2>
+      <h2>Catalogo de productos</h2>
       <ItemList products={products} />
     </StyledContainer>
   );
