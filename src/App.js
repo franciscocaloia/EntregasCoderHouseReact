@@ -21,11 +21,15 @@ function App() {
       mobile: "560px",
     },
   };
+  const categories = {
+    placas: "TYPE_BOARD",
+    sensores: "TYPE_SENSOR",
+  };
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <NavBar />
+        <NavBar categories={categories} />
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:id" element={<ItemListContainer />} />

@@ -9,18 +9,24 @@ import {
   StyledNavContainer,
 } from "../styled/StyledNavBar.styled";
 
-const NavBar = () => {
+const NavBar = ({ categories }) => {
+  const showCategories = [];
+  for (const name in categories) {
+    showCategories.push(name);
+  }
   return (
     <StyledNavBar>
       <StyledNavContainer>
         <Logo />
         <StyledMenu>
           <MenuDropDown content="tienda">
-            <MenuItem content="placas" URL={"/category/TYPE_BOARD"}></MenuItem>
-            <MenuItem
-              content="sensores"
-              URL={"/category/TYPE_SENSOR"}
-            ></MenuItem>
+            {showCategories.map((name) => (
+              <MenuItem
+                key={name}
+                content={name}
+                URL={`/category/${categories[name]}`}
+              ></MenuItem>
+            ))}
           </MenuDropDown>
           <CartWidget URL={"/"}></CartWidget>
           <MenuItem content="Nosotros" URL="/"></MenuItem>
