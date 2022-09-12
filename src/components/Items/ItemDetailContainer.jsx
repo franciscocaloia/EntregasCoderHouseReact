@@ -13,10 +13,9 @@ const ItemDetailContainer = () => {
         setTimeout(() => {
           if (dataJSON) {
             const item = dataJSON.find((p) => p.id === +id);
-            resolve(item);
-          } else {
-            reject("error");
+            if (item) resolve(item);
           }
+          reject("error");
         }, 2000);
       });
     getItem()
