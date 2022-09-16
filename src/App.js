@@ -4,6 +4,8 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./components/styled/GlobalStyles.jsx";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ItemDetailContainer from "./components/items/ItemDetailContainer.jsx";
+import { CartProvider } from "./contexts/CartContext.jsx";
+import CartContainer from "./components/cart/CartContainer.jsx";
 
 function App() {
   const theme = {
@@ -28,13 +30,16 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        <NavBar categories={categories} />
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path="/category/:id" element={<ItemListContainer />} />
-          <Route path="/items/:id" element={<ItemDetailContainer />} />
-        </Routes>
+        <CartProvider>
+          <GlobalStyle />
+          <NavBar categories={categories} />
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/cart" element={<CartContainer />} />
+            <Route path="/category/:id" element={<ItemListContainer />} />
+            <Route path="/items/:id" element={<ItemDetailContainer />} />
+          </Routes>
+        </CartProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

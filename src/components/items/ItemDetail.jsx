@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { StyledBackLink, StyledItemDetail } from "../styled/StyledItems.styled";
+import {
+  StyledBackLink,
+  StyledCartLink,
+  StyledItemDetail,
+} from "../styled/StyledItems.styled";
 import ItemCount from "./ItemCount";
+import { useCart } from "../../contexts/CartContext";
 
-const ItemDetail = ({ name, description, price, stock, img }) => {
-  const [actualStock, setActualStock] = useState(stock);
+const ItemDetail = ({ id, name, description, price, stock, img }) => {
+  const [unitsCount, setUnitsCount] = useState(0);
+  const context = useCart();
   return (
-    <StyledItemDetail stock={actualStock}>
+    <StyledItemDetail stock={stock - unitsCount}>
       <div className="itemDetailImg">
         <img src={img} alt={name} />
       </div>
@@ -14,18 +20,22 @@ const ItemDetail = ({ name, description, price, stock, img }) => {
         <p className="itemDetailDescription">{description}</p>
         <div className="itemDetailPriceContainer">
           <span className="itemDetailPrice">${price}</span>
-          <ItemCount
-            initial={1}
-            stock={actualStock}
-            onAdd={(units) => {
-              setActualStock(actualStock - units);
-              console.log(
-                `Has comprado ${units} unidades del producto ${name}`
-              );
-            }}
-          />
+          {unitsCount ? (
+            <StyledCartLink to="/cart">Finalizar compra</StyledCartLink>
+          ) : (
+            <ItemCount
+              initial={1}
+              stock={stock - unitsCount}
+              onAdd={(units) => {
+                setUnitsCount(units);
+                context.addToCart(id, units);
+              }}
+            />
+          )}
         </div>
-        <span className="itemDetailStock">{`Quedan ${actualStock} unidades en stock`}</span>
+        <span className="itemDetailStock">{`Quedan ${
+          stock - unitsCount
+        } unidades en stock`}</span>
       </div>
       <StyledBackLink to={"/"}>
         <img src="/assets/arrow.svg" alt="arrow" />

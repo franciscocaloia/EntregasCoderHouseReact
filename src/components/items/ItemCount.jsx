@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import {
   StyledAddButton,
+  StyledCountButton,
   StyledItemCount,
   StyledUnitsContainer,
 } from "../styled/StyledItems.styled";
-import { StyledButton } from "../styled/StyledUtils.styled";
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [units, setUnits] = useState(parseInt(initial));
@@ -27,13 +27,16 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   return (
     <StyledItemCount>
       <StyledUnitsContainer>
-        <StyledButton disabled={units === initial} onClick={handleDecrease}>
+        <StyledCountButton
+          disabled={units === initial}
+          onClick={handleDecrease}
+        >
           -
-        </StyledButton>
+        </StyledCountButton>
         <span>{units}</span>
-        <StyledButton disabled={units >= stock} onClick={handleIncrease}>
+        <StyledCountButton disabled={units >= stock} onClick={handleIncrease}>
           +
-        </StyledButton>
+        </StyledCountButton>
       </StyledUnitsContainer>
       <StyledAddButton disabled={!stock} onClick={handleAdd}>
         Agregar al carrito

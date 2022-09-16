@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
       new Promise((resolve, reject) => {
         setTimeout(() => {
           if (dataJSON) {
-            const item = dataJSON.find((p) => p.id === +id);
+            const item = dataJSON.find((p) => p.id === parseInt(id));
             if (item) resolve(item);
           }
           reject("error");
@@ -25,16 +25,13 @@ const ItemDetailContainer = () => {
       .catch((err) => {
         console.log(err);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  }, [id]);
   // useEffect(() => {
   //   (async () => {
   //     const response = await getItem();
   //     setProduct(response);
   //   })();
   // }, []);
-
   return (
     <StyledItemDetailContainer>
       {product ? <ItemDetail {...product} /> : <h3>Loading...</h3>}

@@ -52,10 +52,15 @@ export const StyledItemList = styled(StyledGridContainer)`
     grid-template-columns: 1fr;
   }
 `;
+export const StyledCountButton = styled(StyledButton)`
+  height: 1.5rem;
+  width: 2rem;
+`;
 
 export const StyledAddButton = styled(StyledButton)`
   margin: 1rem 0;
   max-width: 10rem;
+  height: 1.5rem;
   width: 90%;
   font-size: 0.6rem;
   text-transform: uppercase;
@@ -64,7 +69,7 @@ export const StyledAddButton = styled(StyledButton)`
 export const StyledUnitsContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  max-width: 10rem;
+  width: 10rem;
   width: 90%;
   margin: 1rem 0;
 `;
@@ -73,11 +78,7 @@ export const StyledItemCount = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  @media (min-width: 768px) {
-    width: 60%;
-    align-items: flex-end;
-  }
+  width: 10rem;
 `;
 
 export const StyledItemImg = styled.img`
@@ -113,6 +114,17 @@ export const StyledBackLink = styled(Link)`
     width: 1rem;
     transform: rotate(180deg);
   }
+`;
+
+export const StyledCartLink = styled(Link)`
+  background-color: #fff;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: #444;
+  line-height: 1.5rem;
+  margin: 1rem 0;
 `;
 
 export const StyledItemDetail = styled.div`
@@ -151,16 +163,18 @@ export const StyledItemDetail = styled.div`
     .itemDetailPriceContainer {
       display: flex;
       flex-direction: column;
+      align-items: center;
       .itemDetailPrice {
         align-self: center;
         text-align: center;
         width: 100%;
         padding: 1rem;
+        margin: 1rem 0;
         background-color: #fff;
         box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
         border-radius: 0.5rem;
-        font-size: 1.8rem;
-        line-height: 3rem;
+        font-size: 1.5rem;
+        line-height: 1.5rem;
       }
     }
     .itemDetailStock {
@@ -178,7 +192,7 @@ export const StyledItemDetail = styled.div`
       border-radius: 5px;
     }
   }
-  @media (min-width: 768px) {
+  @media (min-width: ${({ theme }) => theme.screenSize.tablet}) {
     flex-direction: row;
     .itemDetailImg {
       width: 50%;
@@ -189,6 +203,8 @@ export const StyledItemDetail = styled.div`
       width: 50%;
       .itemDetailPriceContainer {
         flex-direction: row;
+        justify-content: space-between;
+        height: 7rem;
         .itemDetailPrice {
           width: 40%;
         }
