@@ -9,8 +9,12 @@ import {
   StyledNavContainer,
 } from "../styled/StyledNavBar.styled";
 
-const NavBar = ({ categories }) => {
+const NavBar = () => {
   const showCategories = [];
+  const categories = {
+    placas: "TYPE_BOARD",
+    sensores: "TYPE_SENSOR",
+  };
   for (const name in categories) {
     showCategories.push(name);
   }

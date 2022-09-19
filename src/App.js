@@ -23,16 +23,13 @@ function App() {
       mobile: "560px",
     },
   };
-  const categories = {
-    placas: "TYPE_BOARD",
-    sensores: "TYPE_SENSOR",
-  };
+
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CartProvider>
           <GlobalStyle />
-          <NavBar categories={categories} />
+          <NavBar />
           <Routes>
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/cart" element={<CartContainer />} />

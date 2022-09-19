@@ -7,7 +7,8 @@ import {
 import ItemCount from "./ItemCount";
 import { useCart } from "../../contexts/CartContext";
 
-const ItemDetail = ({ id, name, description, price, stock, img }) => {
+const ItemDetail = ({ item }) => {
+  const { name, description, price, stock, img } = item;
   const [unitsCount, setUnitsCount] = useState(0);
   const context = useCart();
   return (
@@ -28,7 +29,7 @@ const ItemDetail = ({ id, name, description, price, stock, img }) => {
               stock={stock - unitsCount}
               onAdd={(units) => {
                 setUnitsCount(units);
-                context.addToCart(id, units);
+                context.addToCart(item, units);
               }}
             />
           )}

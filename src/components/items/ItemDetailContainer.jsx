@@ -5,22 +5,22 @@ import { StyledItemDetailContainer } from "../styled/StyledItems.styled";
 import dataJSON from "../../products.json";
 
 const ItemDetailContainer = () => {
-  const [product, setProduct] = useState(null);
+  const [item, setItem] = useState(null);
   const { id } = useParams();
   useEffect(() => {
     const getItem = () =>
       new Promise((resolve, reject) => {
         setTimeout(() => {
           if (dataJSON) {
-            const item = dataJSON.find((p) => p.id === parseInt(id));
-            if (item) resolve(item);
+            const itemFound = dataJSON.find((p) => p.id === parseInt(id));
+            if (itemFound) resolve(itemFound);
           }
           reject("error");
         }, 2000);
       });
     getItem()
       .then((res) => {
-        setProduct(res);
+        setItem(res);
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +34,7 @@ const ItemDetailContainer = () => {
   // }, []);
   return (
     <StyledItemDetailContainer>
-      {product ? <ItemDetail {...product} /> : <h3>Loading...</h3>}
+      {item ? <ItemDetail item={item} /> : <h3>Loading...</h3>}
     </StyledItemDetailContainer>
   );
 };
