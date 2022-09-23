@@ -1,22 +1,30 @@
 import React, { useEffect, useState } from "react";
 import ItemList from "./ItemList";
-import dataJSON from "../../products.json"; //https://github.com/public-apis/public-apis
 import { StyledContainer } from "../styled/StyledUtils.styled";
-import { getProducts } from "../../utils/Utils";
 import { useParams } from "react-router-dom";
+import {
+  collection,
+  getDocs,
+  getFirestore,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { id } = useParams();
+
   useEffect(() => {
-    setProducts([]);
-    getProducts(dataJSON)
-      .then((res) => {
-        setProducts(res.filter((p) => (id ? p.type === id : true)));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    (async () => {
+      setProducts([]);
+      const db = getFirestore();
+      const q = id
+        ? query(collection(db, "items"), where("type", "==", id))
+        : query(collection(db, "items"), orderBy("type", "asc"));
+      const snapshot = await getDocs(q);
+      setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+    })();
   }, [id]);
   return (
     <StyledContainer>

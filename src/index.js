@@ -3,6 +3,23 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBCxDYzicddbrLcJWFDrSqJGsFMf0eOdxc",
+  authDomain: "kloiarduino.firebaseapp.com",
+  projectId: "kloiarduino",
+  storageBucket: "kloiarduino.appspot.com",
+  messagingSenderId: "771704027552",
+  appId: "1:771704027552:web:365d20c03754c7bce10cc5",
+};
+
+// Initialize Firebase
+initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

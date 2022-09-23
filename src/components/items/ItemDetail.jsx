@@ -11,6 +11,10 @@ const ItemDetail = ({ item }) => {
   const { name, description, price, stock, img } = item;
   const [unitsCount, setUnitsCount] = useState(0);
   const context = useCart();
+  const onAdd = (units) => {
+    setUnitsCount(units);
+    context.addToCart(item, units);
+  };
   return (
     <StyledItemDetail stock={stock - unitsCount}>
       <div className="itemDetailImg">
@@ -24,14 +28,7 @@ const ItemDetail = ({ item }) => {
           {unitsCount ? (
             <StyledCartLink to="/cart">Finalizar compra</StyledCartLink>
           ) : (
-            <ItemCount
-              initial={1}
-              stock={stock - unitsCount}
-              onAdd={(units) => {
-                setUnitsCount(units);
-                context.addToCart(item, units);
-              }}
-            />
+            <ItemCount initial={1} stock={stock - unitsCount} onAdd={onAdd} />
           )}
         </div>
         <span className="itemDetailStock">{`Quedan ${
