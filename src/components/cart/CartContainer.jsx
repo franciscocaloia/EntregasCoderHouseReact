@@ -1,16 +1,15 @@
 import React from "react";
 import { useCart } from "../../contexts/CartContext";
+import { StyledCartContainer } from "../styled/StyledCart.styled";
+import CartList from "./CartList";
 
 const CartContainer = () => {
   const context = useCart();
   return (
-    <div>
-      {context.cart.map((p) => (
-        <h6>
-          id del producto: {p.id} cantidad del producto: {p.units}
-        </h6>
-      ))}
-    </div>
+    <StyledCartContainer>
+      <h2>Productos en el carro</h2>
+      <CartList items={context.cart} />
+    </StyledCartContainer>
   );
 };
 

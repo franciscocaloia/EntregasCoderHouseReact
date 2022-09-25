@@ -30,9 +30,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (id) => {
-    setCart((prev) => {
-      prev.filter((p) => p.id !== id);
-    });
+    setCart((prev) => prev.filter((p) => p.id !== id));
   };
 
   const clearCart = () => {

@@ -116,17 +116,6 @@ export const StyledBackLink = styled(Link)`
   }
 `;
 
-export const StyledCartLink = styled(Link)`
-  background-color: #fff;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  text-decoration: none;
-  color: #444;
-  line-height: 1.5rem;
-  margin: 1rem 0;
-`;
-
 export const StyledItemDetail = styled.div`
   z-index: 10;
   position: relative;

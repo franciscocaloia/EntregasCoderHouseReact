@@ -12,10 +12,12 @@ export const StyledMenu = styled.ul`
   width: 36rem;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   list-style-type: none;
   margin: 0;
 `;
 export const StyledMenuItem = styled.li`
+  position: relative;
   width: 9rem;
   a {
     display: flex;

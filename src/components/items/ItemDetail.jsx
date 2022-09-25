@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import {
-  StyledBackLink,
-  StyledCartLink,
-  StyledItemDetail,
-} from "../styled/StyledItems.styled";
+import { StyledBackLink, StyledItemDetail } from "../styled/StyledItems.styled";
 import ItemCount from "./ItemCount";
 import { useCart } from "../../contexts/CartContext";
+import { StyledCartLink } from "../styled/StyledCart.styled";
 
 const ItemDetail = ({ item }) => {
   const { name, description, price, stock, img } = item;
