@@ -2,20 +2,25 @@ import {
   StyledCartLink,
   StyledCartList,
   StyledCartTotal,
+  StyledCheckoutLink,
+  StyledTotalContainer,
 } from "../styled/StyledCart.styled";
 import CartItem from "./CartItem";
 
-const CartList = ({ items }) => {
-  let total = 0;
+const CartList = ({ cart }) => {
   return (
     <StyledCartList>
-      {items.length ? (
+      {cart.items.length ? (
         <ul>
-          {items.map((item) => {
-            total += item.price * item.units;
-            return <CartItem key={item.id} {...item} />;
-          })}
-          <StyledCartTotal>TOTAL: ${total}</StyledCartTotal>
+          {cart.items.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+          <StyledTotalContainer columns={`repeat(2,1fr)`} gap={`1rem`}>
+            <StyledCartTotal>TOTAL: $ {cart.total}</StyledCartTotal>
+            <StyledCheckoutLink to="/checkout">
+              Finalizar compra
+            </StyledCheckoutLink>
+          </StyledTotalContainer>
         </ul>
       ) : (
         <>

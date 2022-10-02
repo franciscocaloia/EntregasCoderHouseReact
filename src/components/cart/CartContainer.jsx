@@ -4,11 +4,11 @@ import { StyledCartContainer } from "../styled/StyledCart.styled";
 import CartList from "./CartList";
 
 const CartContainer = () => {
-  const context = useCart();
+  const { cart } = useCart();
   return (
     <StyledCartContainer>
       <h2>Productos en el carro</h2>
-      <CartList items={context.cart} />
+      <CartList cart={cart} />
     </StyledCartContainer>
   );
 };

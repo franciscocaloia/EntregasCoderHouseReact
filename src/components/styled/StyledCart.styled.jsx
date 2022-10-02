@@ -1,6 +1,10 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { StyledContainer } from "./StyledUtils.styled";
+import {
+  StyledBlueButton,
+  StyledContainer,
+  StyledGridContainer,
+  StyledLink,
+} from "./StyledUtils.styled";
 
 export const StyledCartCount = styled.span`
   position: absolute;
@@ -62,15 +66,17 @@ export const StyledCartItem = styled(StyledCartLi)`
     font-size: 0.8rem;
   }
 `;
-
+export const StyledTotalContainer = styled(StyledGridContainer)`
+  margin: 1rem;
+`;
 export const StyledCartTotal = styled(StyledCartLi)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0;
+  width: 100%;
+  text-align: center;
   height: 3rem;
 `;
 
-export const StyledCartLink = styled(Link)`
+export const StyledCartLink = styled(StyledLink)`
   background-color: #fff;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
   border-radius: 0.5rem;
@@ -79,4 +85,68 @@ export const StyledCartLink = styled(Link)`
   color: #444;
   line-height: 1.5rem;
   margin: 1rem 0;
+`;
+
+export const StyledCheckoutContainer = styled(StyledContainer)`
+  max-width: 30rem;
+`;
+
+export const StyledForm = styled.form`
+  background-color: #fff;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-top: 4rem;
+  font-size: 16px;
+  * {
+    line-height: 1.5;
+  }
+`;
+
+export const StyledInputContainer = styled.div`
+  height: 7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  input {
+    width: 100%;
+    padding: 0.8em;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background: #f9f9f9;
+    transition: background 0.25s, border-color 0.25s, color 0.25s;
+    &:focus {
+      background: #fff;
+    }
+  }
+  .inputError {
+    color: #d40000;
+    border-color: #d40000;
+    &::placeholder {
+      color: #ffbfbf;
+    }
+  }
+  .textError {
+    color: #d40000;
+    margin-top: 0.5rem;
+    font-size: 0.8em;
+  }
+`;
+export const StyledCheckoutLink = styled(StyledLink)`
+  width: 100%;
+  border-radius: 0.5rem;
+  height: 3rem;
+  padding: 1rem;
+  background-color: ${({ theme }) => theme.colors.primary};
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  color: #fff;
+  text-align: center;
+`;
+
+export const StyledCheckoutButton = styled(StyledBlueButton)`
+  width: 100%;
+  padding: 1rem;
 `;

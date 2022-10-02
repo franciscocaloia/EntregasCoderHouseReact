@@ -3,10 +3,11 @@ import { useCart } from "../../contexts/CartContext";
 import { StyledCartItem } from "../styled/StyledCart.styled";
 import { StyledButton } from "../styled/StyledUtils.styled";
 
-const CartItem = ({ id, img, name, price, units }) => {
+const CartItem = ({ item }) => {
+  const { name, units, price, img } = item;
   const context = useCart();
   const onClick = () => {
-    context.removeFromCart(id);
+    context.removeFromCart(item);
   };
   return (
     <StyledCartItem>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const StyledGridContainer = styled.div`
@@ -29,6 +30,14 @@ export const StyledButton = styled.button`
     }
   }
 `;
+export const StyledBlueButton = styled(StyledButton)`
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: #fff;
+  &:disabled {
+    color: #fff;
+    background-color: ${({ theme }) => theme.colors.primaryDark};
+  }
+`;
 
 export const StyledContainer = styled.div`
   height: 100%;
@@ -37,5 +46,14 @@ export const StyledContainer = styled.div`
 
   @media (min-width: ${({ theme }) => theme.screenSize.tablet}) {
     max-width: 100rem;
+  }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  transition: all 0.3s;
+  &:hover {
+    opacity: 0.9;
+    transform: scale(0.95);
   }
 `;

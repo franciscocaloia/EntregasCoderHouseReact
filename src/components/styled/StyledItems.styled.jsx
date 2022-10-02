@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
   StyledButton,
   StyledContainer,
   StyledGridContainer,
+  StyledLink,
 } from "./StyledUtils.styled";
 
 export const StyledItem = styled.div`
@@ -30,12 +30,9 @@ export const StyledItem = styled.div`
   }
 `;
 
-export const StyledItemLink = styled(Link)`
-  text-decoration: none;
+export const StyledItemLink = styled(StyledLink)`
   width: 20rem;
-  transition: all 0.3s;
   &:hover {
-    opacity: 0.9;
     transform: scale(1.05);
   }
 `;
@@ -99,7 +96,7 @@ export const StyledItemDetailContainer = styled(StyledContainer)`
   }
 `;
 
-export const StyledBackLink = styled(Link)`
+export const StyledBackLink = styled(StyledLink)`
   position: absolute;
   top: 1rem;
   left: 1rem;
