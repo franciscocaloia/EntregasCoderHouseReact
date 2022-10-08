@@ -1,3 +1,4 @@
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState, useContext } from "react";
 
 const CartContext = React.createContext();
@@ -35,6 +36,24 @@ export const CartProvider = ({ children }) => {
     }));
   };
 
+  const addOrder = (currentUser) => {
+    const db = getFirestore();
+    const ordersCollection = collection(db, "orders");
+    const today = new Date().toISOString().slice(0, 10);
+    const buyer = {
+      fullName: currentUser.displayName,
+      email: currentUser.email,
+    };
+    const newOrder = {
+      buyer,
+      items: cart.items,
+      total: cart.total,
+      date: today,
+    };
+    addDoc(ordersCollection, newOrder);
+    clearCart();
+  };
+
   const clearCart = () => {
     setCart({ items: [], total: 0 });
   };
@@ -45,6 +64,7 @@ export const CartProvider = ({ children }) => {
     addToCart,
     clearCart,
     removeFromCart,
+    addOrder,
   };
   return (
     <CartContext.Provider value={context}>{children}</CartContext.Provider>

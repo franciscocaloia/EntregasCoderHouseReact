@@ -1,27 +1,25 @@
-import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React from "react";
-import { useCart } from "../../contexts/CartContext";
-import { StyledCheckoutContainer } from "../styled/StyledCart.styled";
-import CartForm from "./CartForm";
-
-const CartCheckout = () => {
-  const { cart, clearCart } = useCart();
-  const db = getFirestore();
-  const ordersCollection = collection(db, "orders");
-  const onFormSubmit = (buyer) => {
-    let today = new Date().toISOString().slice(0, 10);
-    const newOrder = {
-      buyer,
-      items: cart.items,
-      total: cart.total,
-      date: today,
-    };
-    addDoc(ordersCollection, newOrder);
-    clearCart();
+import { useAuth } from "../../contexts/AuthContext";
+import { StyledCheckoutButton } from "../styled/StyledAuth.styled";
+import {
+  StyledCartTotal,
+  StyledCheckoutContainer,
+} from "../styled/StyledCart.styled";
+const CartCheckout = ({ cart, clearCart, addOrder }) => {
+  const { currentUser, toggleSignin } = useAuth();
+  const handleCheckout = () => {
+    if (currentUser) {
+      addOrder(currentUser);
+    } else {
+      toggleSignin();
+    }
   };
   return (
-    <StyledCheckoutContainer>
-      <CartForm onFormSubmit={onFormSubmit} />
+    <StyledCheckoutContainer columns={`repeat(2,1fr)`} gap={`1rem`}>
+      <StyledCartTotal>TOTAL: $ {cart.total}</StyledCartTotal>
+      <StyledCheckoutButton onClick={handleCheckout}>
+        Finalizar compra
+      </StyledCheckoutButton>
     </StyledCheckoutContainer>
   );
 };

@@ -43,6 +43,7 @@ export const StyledContainer = styled.div`
   height: 100%;
   width: 90%;
   margin: 0 auto;
+  position: relative;
 
   @media (min-width: ${({ theme }) => theme.screenSize.tablet}) {
     max-width: 100rem;

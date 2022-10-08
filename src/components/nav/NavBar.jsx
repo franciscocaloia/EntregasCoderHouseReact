@@ -1,13 +1,14 @@
 import React from "react";
 import CartWidget from "./CartWidget";
 import Logo from "./Logo";
-import MenuDropDown from "./MenuDropDown";
 import MenuItem from "./MenuItem";
 import {
+  HiddenMenu,
   StyledMenu,
   StyledNavBar,
   StyledNavContainer,
 } from "../styled/StyledNavBar.styled";
+import UserWidget from "./UserWidget";
 
 const NavBar = () => {
   const showCategories = [];
@@ -23,18 +24,19 @@ const NavBar = () => {
       <StyledNavContainer>
         <Logo />
         <StyledMenu>
-          <MenuDropDown content="tienda">
-            {showCategories.map((name) => (
-              <MenuItem
-                key={name}
-                content={name}
-                URL={`/category/${categories[name]}`}
-              ></MenuItem>
-            ))}
-          </MenuDropDown>
-          <CartWidget URL={"/"}></CartWidget>
-          <MenuItem content="Nosotros" URL="/"></MenuItem>
-          <MenuItem content="contatco" URL="/"></MenuItem>
+          <MenuItem content="tienda" URL="/">
+            <HiddenMenu>
+              {showCategories.map((name) => (
+                <MenuItem
+                  key={name}
+                  content={name}
+                  URL={`/category/${categories[name]}`}
+                ></MenuItem>
+              ))}
+            </HiddenMenu>
+          </MenuItem>
+          <CartWidget />
+          <UserWidget />
         </StyledMenu>
       </StyledNavContainer>
     </StyledNavBar>

@@ -6,7 +6,11 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import ItemDetailContainer from "./components/items/ItemDetailContainer.jsx";
 import { CartProvider } from "./contexts/CartContext.jsx";
 import CartContainer from "./components/cart/CartContainer.jsx";
-import CartCheckout from "./components/cart/CartCheckout.jsx";
+// import CartCheckout from "./components/cart/CartCheckout.jsx";
+import Signup from "./components/auth/Signup.jsx";
+import { AuthProvider } from "./contexts/AuthContext.jsx";
+import UserProfile from "./components/auth/UserProfile.jsx";
+import Signin from "./components/auth/Signin.jsx";
 
 function App() {
   const theme = {
@@ -28,17 +32,24 @@ function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <CartProvider>
-          <GlobalStyle />
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/cart" element={<CartContainer />} />
-            <Route path="/category/:id" element={<ItemListContainer />} />
-            <Route path="/items/:id" element={<ItemDetailContainer />} />
-            <Route path="/checkout" element={<CartCheckout />} />
-          </Routes>
-        </CartProvider>
+        <AuthProvider>
+          <CartProvider>
+            <GlobalStyle />
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<ItemListContainer />} />
+              <Route path="/cart" element={<CartContainer />} />
+              <Route path="/category/:id" element={<ItemListContainer />} />
+              <Route path="/items/:id" element={<ItemDetailContainer />} />
+              {/* <Route path="/checkout" element={<CartCheckout />} /> */}
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/userProfile" element={<UserProfile />} />
+            </Routes>
+            <Signup />
+            <Signin />
+          </CartProvider>
+        </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   );

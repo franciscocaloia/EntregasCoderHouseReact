@@ -1,7 +1,6 @@
 import React from "react";
 import { useCart } from "../../contexts/CartContext";
-import { StyledCartItem } from "../styled/StyledCart.styled";
-import { StyledButton } from "../styled/StyledUtils.styled";
+import { StyledCartItem, StyledClearButton } from "../styled/StyledCart.styled";
 
 const CartItem = ({ item }) => {
   const { name, units, price, img } = item;
@@ -24,7 +23,7 @@ const CartItem = ({ item }) => {
         <span className="cartUnits">Unidades: {units}</span>
       </div>
       <div className="buttonContainer">
-        <StyledButton onClick={onClick}>x</StyledButton>
+        <StyledClearButton onClick={onClick}>x</StyledClearButton>
       </div>
     </StyledCartItem>
   );

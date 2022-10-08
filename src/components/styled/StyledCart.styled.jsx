@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {
-  StyledBlueButton,
+  StyledButton,
   StyledContainer,
   StyledGridContainer,
   StyledLink,
@@ -21,8 +21,15 @@ export const StyledCartCount = styled.span`
 `;
 
 export const StyledCartContainer = styled(StyledContainer)`
+  display: flex;
+  flex-direction: column;
   width: 60%;
   min-width: 45rem;
+  ul {
+    width: 100%;
+    padding: 0;
+    margin: 1rem;
+  }
 `;
 
 export const StyledCartList = styled.div`
@@ -37,7 +44,7 @@ const StyledCartLi = styled.li`
   background-color: #fff;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
   height: 6rem;
-  margin: 1rem;
+  margin-top: 1rem;
   padding: 1rem;
 `;
 export const StyledCartItem = styled(StyledCartLi)`
@@ -66,9 +73,6 @@ export const StyledCartItem = styled(StyledCartLi)`
     font-size: 0.8rem;
   }
 `;
-export const StyledTotalContainer = styled(StyledGridContainer)`
-  margin: 1rem;
-`;
 export const StyledCartTotal = styled(StyledCartLi)`
   margin: 0;
   width: 100%;
@@ -85,57 +89,14 @@ export const StyledCartLink = styled(StyledLink)`
   color: #444;
   line-height: 1.5rem;
   margin: 1rem 0;
+  align-self: center;
 `;
 
-export const StyledCheckoutContainer = styled(StyledContainer)`
-  max-width: 30rem;
+export const StyledCheckoutContainer = styled(StyledGridContainer)`
+  margin-top: 1rem;
 `;
 
-export const StyledForm = styled.form`
-  background-color: #fff;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-top: 4rem;
-  font-size: 16px;
-  * {
-    line-height: 1.5;
-  }
-`;
-
-export const StyledInputContainer = styled.div`
-  height: 7rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  input {
-    width: 100%;
-    padding: 0.8em;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    outline: none;
-    border: 1px solid #ddd;
-    border-radius: 0.5rem;
-    background: #f9f9f9;
-    transition: background 0.25s, border-color 0.25s, color 0.25s;
-    &:focus {
-      background: #fff;
-    }
-  }
-  .inputError {
-    color: #d40000;
-    border-color: #d40000;
-    &::placeholder {
-      color: #ffbfbf;
-    }
-  }
-  .textError {
-    color: #d40000;
-    margin-top: 0.5rem;
-    font-size: 0.8em;
-  }
-`;
-export const StyledCheckoutLink = styled(StyledLink)`
+export const StyledCheckoutButton = styled(StyledButton)`
   width: 100%;
   border-radius: 0.5rem;
   height: 3rem;
@@ -146,7 +107,16 @@ export const StyledCheckoutLink = styled(StyledLink)`
   text-align: center;
 `;
 
-export const StyledCheckoutButton = styled(StyledBlueButton)`
+export const StyledClearButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
   width: 100%;
-  padding: 1rem;
+`;
+
+export const StyledClearButton = styled(StyledButton)`
+  font-weight: normal;
+  padding: 0.5rem;
+  &:hover {
+    background-color: #ffbfbf;
+  }
 `;
