@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App";
 import { initializeApp } from "firebase/app";
 /*
-  *Función para hacer un reset en los stock de firebase, 
-  *para utilizarla mover la funcion por debajo de la inicializacion de firebase y hacer un llamado a la funcion.
- import {
+ *Función para hacer un reset en los stock de firebase,
+ *para utilizarla mover la funcion por debajo de la inicializacion de firebase y hacer un llamado a la funcion.
+import {
   collection,
   doc,
   getDocs,
@@ -19,7 +19,8 @@ const refillStock = async () => {
   snapshot.docs.forEach((docSnap) => {
     updateDoc(doc(db, "items", docSnap.id), { stock: 10 });
   });
-};*/
+};
+*/
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_apiKey,

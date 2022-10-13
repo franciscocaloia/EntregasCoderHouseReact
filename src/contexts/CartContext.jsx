@@ -5,7 +5,7 @@ const CartContext = React.createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState({ items: ["ahre", "are"], total: 0 });
+  const [cart, setCart] = useState({ items: [], total: 0 });
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem("cart")));
   }, []);

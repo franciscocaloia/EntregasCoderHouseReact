@@ -113,7 +113,7 @@ const Signup = () => {
                   className={phoneError ? "inputError" : ""}
                   type="text"
                   id="phone"
-                  placeholder="Ingrese aqui su apellido"
+                  placeholder="Ingrese aqui su telefono"
                   value={phone}
                   onChange={phoneChangeHandler}
                   onBlur={phoneBlurHandler}
