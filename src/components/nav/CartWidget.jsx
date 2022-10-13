@@ -4,8 +4,8 @@ import { StyledCartCount } from "../styled/StyledCart.styled";
 import { StyledMenuItem } from "../styled/StyledNavBar.styled";
 
 const CartWidget = () => {
-  const { cart } = useCart();
-  const count = cart.items.reduce((prev, actual) => prev + actual.units, 0);
+  const { getItemsCount } = useCart();
+  const count = getItemsCount();
   return (
     <StyledMenuItem>
       <Link to="/cart">
