@@ -40,11 +40,11 @@ export const StyledBlueButton = styled(StyledButton)`
 `;
 
 export const StyledContainer = styled.div`
-  height: 100%;
+  height: calc(100vh - 4rem);
   width: 90%;
   margin: 0 auto;
+  padding: 1rem;
   position: relative;
-
   @media (min-width: ${({ theme }) => theme.screenSize.tablet}) {
     max-width: 100rem;
   }

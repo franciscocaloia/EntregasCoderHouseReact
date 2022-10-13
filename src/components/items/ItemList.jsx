@@ -2,14 +2,12 @@ import React from "react";
 import Item from "./Item";
 import { StyledItemList } from "../styled/StyledItems.styled";
 
-const ItemList = ({ products }) => {
+const ItemList = ({ items }) => {
   return (
     <StyledItemList columns={`repeat(4,1fr)`} gap={`1.5rem`}>
-      {products.length ? (
-        products.map((prod) => <Item key={prod.id} {...prod} />)
-      ) : (
-        <h3>Loading...</h3>
-      )}
+      {items.map((item) => (
+        <Item key={item.id} {...item} />
+      ))}
     </StyledItemList>
   );
 };

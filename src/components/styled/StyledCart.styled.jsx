@@ -23,12 +23,14 @@ export const StyledCartCount = styled.span`
 export const StyledCartContainer = styled(StyledContainer)`
   display: flex;
   flex-direction: column;
-  width: 60%;
-  min-width: 45rem;
   ul {
     width: 100%;
     padding: 0;
     margin: 1rem;
+  }
+  @media (min-width: ${({ theme }) => theme.screenSize.tablet}) {
+    width: 60%;
+    max-width: 45rem;
   }
 `;
 
@@ -49,21 +51,18 @@ const StyledCartLi = styled.li`
 `;
 export const StyledCartItem = styled(StyledCartLi)`
   display: grid;
-  grid-template-columns: 10rem 1fr repeat(3, 5rem);
+  grid-template-columns: 10rem 1fr repeat(4, 5rem);
   align-items: center;
   justify-content: space-between;
-  .imageContainer,
-  .nameContainer,
-  .priceContainer,
-  .unitsContainer,
-  .buttonContainer {
+  & > * {
     height: 4rem;
     display: flex;
     align-items: center;
   }
   .priceContainer,
   .unitsContainer,
-  .buttonContainer {
+  .buttonContainer,
+  .stockContainer {
     justify-content: center;
   }
   .cartImage {
@@ -71,6 +70,13 @@ export const StyledCartItem = styled(StyledCartLi)`
   }
   .cartUnits {
     font-size: 0.8rem;
+  }
+  .cartStock {
+    border: 1px solid #d40000;
+    background-color: #fd7878;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
   }
 `;
 export const StyledCartTotal = styled(StyledCartLi)`
@@ -117,6 +123,74 @@ export const StyledClearButton = styled(StyledButton)`
   font-weight: normal;
   padding: 0.5rem;
   &:hover {
-    background-color: #ffbfbf;
+    background-color: #fd7878;
   }
+`;
+export const StyledAlertContainer = styled.div`
+  background-color: #fff;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 18rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 20rem;
+  .alertTitle {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .alertText {
+    line-height: 1.2;
+    font-size: 1rem;
+    margin: 1rem;
+    text-align: justify;
+    b {
+      display: block;
+      text-align: center;
+      margin: 1rem 0;
+    }
+  }
+  .alertButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .alertButton {
+    width: 100%;
+    height: 2rem;
+    border: 1px solid ${({ theme }) => theme.colors.primaryDark};
+    border-bottom: none;
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.white};
+    &:hover {
+      cursor: pointer;
+      background-color: ${({ theme }) => theme.colors.primaryDark};
+    }
+    &:last-child {
+      border-bottom-left-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
+      border-bottom: ${({ theme }) => theme.colors.primaryDark};
+    }
+  }
+`;
+
+export const StyledCloseAlertButton = styled.button`
+  height: 3rem;
+  width: 100%;
+  background-color: ${({ error, success }) => {
+    if (error) return "#f65656";
+    else if (success) return "#65d266";
+    else return "#fff";
+  }};
+  border: none;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  color: #fff;
+  line-height: 1;
+  font-size: 1.3rem;
+  font-weight: bold;
+  cursor: pointer;
 `;

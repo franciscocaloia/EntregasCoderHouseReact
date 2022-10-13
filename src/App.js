@@ -11,6 +11,7 @@ import Signup from "./components/auth/Signup.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import UserProfile from "./components/auth/UserProfile.jsx";
 import Signin from "./components/auth/Signin.jsx";
+import OrderContainer from "./components/order/OrderContainer.jsx";
 
 function App() {
   const theme = {
@@ -38,13 +39,11 @@ function App() {
             <NavBar />
             <Routes>
               <Route path="/" element={<ItemListContainer />} />
-              <Route path="/cart" element={<CartContainer />} />
               <Route path="/category/:id" element={<ItemListContainer />} />
               <Route path="/items/:id" element={<ItemDetailContainer />} />
-              {/* <Route path="/checkout" element={<CartCheckout />} /> */}
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/signin" element={<Signin />} />
+              <Route path="/cart" element={<CartContainer />} />
               <Route path="/userProfile" element={<UserProfile />} />
+              <Route path="/order" element={<OrderContainer />} />
             </Routes>
             <Signup />
             <Signin />

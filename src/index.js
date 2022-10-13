@@ -2,23 +2,33 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+/*
+  *Función para hacer un reset en los stock de firebase, 
+  *para utilizarla mover la funcion por debajo de la inicializacion de firebase y hacer un llamado a la funcion.
+ import {
+  collection,
+  doc,
+  getDocs,
+  getFirestore,
+  updateDoc,
+} from "firebase/firestore";
+const refillStock = async () => {
+  const db = getFirestore();
+  const snapshot = await getDocs(collection(db, "items"));
+  snapshot.docs.forEach((docSnap) => {
+    updateDoc(doc(db, "items", docSnap.id), { stock: 10 });
+  });
+};*/
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBCxDYzicddbrLcJWFDrSqJGsFMf0eOdxc",
-  authDomain: "kloiarduino.firebaseapp.com",
-  projectId: "kloiarduino",
-  storageBucket: "kloiarduino.appspot.com",
-  messagingSenderId: "771704027552",
-  appId: "1:771704027552:web:365d20c03754c7bce10cc5",
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
 };
-
-// Initialize Firebase
 initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -27,8 +37,3 @@ root.render(
   <App />
   //</React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

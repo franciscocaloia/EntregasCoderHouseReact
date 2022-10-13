@@ -10,7 +10,8 @@ import CartCheckout from "./CartCheckout";
 import CartList from "./CartList";
 
 const CartContainer = () => {
-  const { cart, clearCart, addOrder } = useCart();
+  const context = useCart();
+  const { cart, clearCart } = context;
   return (
     <StyledCartContainer>
       <h2>Productos en el carro</h2>
@@ -21,8 +22,8 @@ const CartContainer = () => {
               Limpiar carro
             </StyledClearButton>
           </StyledClearButtonContainer>
-          <CartList cart={cart} />
-          <CartCheckout cart={cart} clearCart={clearCart} addOrder={addOrder} />
+          <CartList items={cart.items} />
+          <CartCheckout {...context} />
         </>
       ) : (
         <>

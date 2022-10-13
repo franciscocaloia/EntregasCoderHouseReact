@@ -1,11 +1,11 @@
 import { StyledCartList } from "../styled/StyledCart.styled";
 import CartItem from "./CartItem";
 
-const CartList = ({ cart }) => {
+const CartList = ({ items }) => {
   return (
     <StyledCartList>
       <ul>
-        {cart.items.map((item) => (
+        {items.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
       </ul>

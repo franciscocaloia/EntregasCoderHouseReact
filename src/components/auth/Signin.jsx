@@ -2,6 +2,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import useInput from "../../hooks/inputHook";
 import {
   StyledAuthError,
+  StyledAuthSuccess,
   StyledCheckoutButton,
   StyledCloseFormButton,
   StyledForm,
@@ -12,8 +13,14 @@ import {
 const Signin = () => {
   const inputNotEmpty = (value) => value.trim() !== "";
   const isEmail = (value) => value.includes("@");
-  const { authError, signin, showSignin, toggleSignin, toggleSignup } =
-    useAuth();
+  const {
+    authError,
+    authSuccess,
+    signin,
+    showSignin,
+    toggleSignin,
+    toggleSignup,
+  } = useAuth();
   const {
     value: email,
     inputError: emailError,
@@ -51,7 +58,9 @@ const Signin = () => {
                 onBlur={emailBlurHandler}
               />
               {emailError && (
-                <p className="textError">Ingrese un nombre valido</p>
+                <p className="textError">
+                  El correo debe contener el caracter "@"
+                </p>
               )}
             </StyledInputContainer>
             <StyledInputContainer>
@@ -67,14 +76,14 @@ const Signin = () => {
                 onBlur={passwordBlurHandler}
               />
               {passwordError && (
-                <p className="textError">Ingrese un nombre valido</p>
+                <p className="textError">Ingrese una contraseña válida</p>
               )}
             </StyledInputContainer>
             <StyledCheckoutButton disabled={!(emailValid && passwordValid)}>
               Iniciar sesion
             </StyledCheckoutButton>
             <p>
-              No tienes una cuenta?{" "}
+              No tienes una cuenta?
               <StyledToggleRegisterButton
                 onClick={() => {
                   toggleSignin();
@@ -88,9 +97,12 @@ const Signin = () => {
               x
             </StyledCloseFormButton>
           </StyledForm>
-          {authError && <StyledAuthError>{authError}</StyledAuthError>}
         </StyledFormBackground>
       )}
+      {authSuccess === "signin" && (
+        <StyledAuthSuccess>Sesión iniciada!</StyledAuthSuccess>
+      )}
+      {authError && <StyledAuthError>{authError}</StyledAuthError>}
     </>
   );
 };

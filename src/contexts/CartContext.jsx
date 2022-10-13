@@ -1,4 +1,3 @@
-import { addDoc, collection, getFirestore } from "firebase/firestore";
 import React, { useState, useContext } from "react";
 
 const CartContext = React.createContext();
@@ -7,6 +6,7 @@ export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState({ items: [], total: 0 });
+
   const getFromCart = (id) => {
     return cart.items.find((p) => p.id === id);
   };
@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
                 }
               : p
           )
-        : [...prevCart.items, { ...item, units: units }],
+        : [...prevCart.items, { ...item, valid: true, units: units }],
       total: prevCart.total + item.price * units,
     }));
   };
@@ -36,27 +36,35 @@ export const CartProvider = ({ children }) => {
     }));
   };
 
-  const addOrder = (currentUser) => {
-    const db = getFirestore();
-    const ordersCollection = collection(db, "orders");
-    const today = new Date().toISOString().slice(0, 10);
-    const buyer = {
-      fullName: currentUser.displayName,
-      email: currentUser.email,
-    };
-    const newOrder = {
-      buyer,
-      items: cart.items,
-      total: cart.total,
-      date: today,
-    };
-    addDoc(ordersCollection, newOrder);
-    clearCart();
+  const validateItemStock = (doc, item) => {
+    if (item.units > doc.stock) {
+      if (item.valid) {
+        setCart((prevCart) => ({
+          items: prevCart.items.map((i) =>
+            i.id === item.id ? { ...i, valid: false } : i
+          ),
+          total: prevCart.total,
+        }));
+      }
+      return false;
+    } else {
+      if (!item.valid) {
+        setCart((prevCart) => ({
+          items: prevCart.items.map((i) =>
+            i.id === item.id ? { ...i, valid: true } : i
+          ),
+          total: prevCart.total,
+        }));
+      }
+      return true;
+    }
   };
 
   const clearCart = () => {
     setCart({ items: [], total: 0 });
   };
+  const getItemsCount = () =>
+    cart.items.reduce((prev, actual) => prev + actual.units, 0);
   const context = {
     cart,
     getFromCart,
@@ -64,8 +72,10 @@ export const CartProvider = ({ children }) => {
     addToCart,
     clearCart,
     removeFromCart,
-    addOrder,
+    validateItemStock,
+    getItemsCount,
   };
+
   return (
     <CartContext.Provider value={context}>{children}</CartContext.Provider>
   );

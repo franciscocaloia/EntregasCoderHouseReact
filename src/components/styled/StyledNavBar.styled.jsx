@@ -68,6 +68,18 @@ export const StyledLogo = styled.div`
   }
 `;
 export const StyledNavContainer = styled(StyledContainer)`
+  height: 4rem;
   display: flex;
   justify-content: space-between;
+  padding: 0;
+  & > * {
+    height: 4rem;
+  }
+`;
+
+export const StyledCategory = styled.span`
+  background-color: ${({ theme }) => theme.colors.primary};
+  padding: 0.5rem;
+  border-radius: 0.3rem;
+  color: ${({ theme }) => theme.colors.white};
 `;

@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyledBackLink, StyledItemDetail } from "../styled/StyledItems.styled";
 import ItemCount from "./ItemCount";
 import { useCart } from "../../contexts/CartContext";
 import { StyledCartLink } from "../styled/StyledCart.styled";
 
 const ItemDetail = ({ item }) => {
-  const { name, description, price, stock, img } = item;
+  const { id, name, description, price, stock, img } = item;
   const [unitsCount, setUnitsCount] = useState(0);
-  const context = useCart();
+  const { cart, addToCart } = useCart();
+
+  /*
+    Dentro de este useEffect se obtiene la cantidad de items que ya se encuentran en el carrito de este mismo item. 
+    Esto es para que el usuario no pueda agregar mas productos al carro de los que hay realmente en stock 
+    ya que el stock se descuenta unicamente al momento de finalizar la compra.
+    (de otra manera el usuario podria volver a entrar al detalle del producto y agregar nuevamente todo el stock disponible cada vez que haga render del componente itemDetail)
+  */
+
+  useEffect(() => {
+    const itemCart = cart.items.find((i) => i.id === id);
+    setUnitsCount(itemCart ? itemCart.units : 0);
+  }, [id, cart.items]);
+
   const onAdd = (units) => {
     setUnitsCount(units);
-    context.addToCart(item, units);
+    addToCart(item, units);
   };
+
   return (
     <StyledItemDetail stock={stock - unitsCount}>
       <div className="itemDetailImg">

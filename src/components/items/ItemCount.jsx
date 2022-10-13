@@ -8,22 +8,26 @@ import {
 
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [units, setUnits] = useState(parseInt(initial));
+
   const handleIncrease = () => {
     if (units < stock) {
       setUnits(units + 1);
     }
   };
+
   const handleDecrease = () => {
     if (units > initial) {
       setUnits(units - 1);
     }
   };
+
   const handleAdd = () => {
     if (stock) {
       onAdd(units);
       setUnits(initial);
     }
   };
+
   return (
     <StyledItemCount>
       <StyledUnitsContainer>

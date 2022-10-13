@@ -4,32 +4,50 @@ import { StyledContainer } from "../styled/StyledUtils.styled";
 import { useParams } from "react-router-dom";
 import {
   collection,
+  doc,
+  getDoc,
   getDocs,
   getFirestore,
   orderBy,
   query,
   where,
 } from "firebase/firestore";
+import { StyledCategory } from "../styled/StyledNavBar.styled";
 
 const ItemListContainer = () => {
-  const [products, setProducts] = useState([]);
+  const [items, setItems] = useState([]);
+  const [category, setCategory] = useState();
   const { id } = useParams();
+
+  /*
+    Dentro de este useEffect se realiza el fetching de datos para mostrar los items y la respectiva categoría
+  */
 
   useEffect(() => {
     (async () => {
-      setProducts([]);
+      setItems([]);
       const db = getFirestore();
       const q = id
         ? query(collection(db, "items"), where("type", "==", id))
         : query(collection(db, "items"), orderBy("type", "asc"));
-      const snapshot = await getDocs(q);
-      setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      const querySnapshot = await getDocs(q);
+      setItems(
+        querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+      );
+      if (id) {
+        const categorySnapshot = await getDoc(doc(db, "categories", id));
+        setCategory({ id: categorySnapshot.id, ...categorySnapshot.data() });
+      } else {
+        setCategory();
+      }
     })();
   }, [id]);
+
   return (
     <StyledContainer>
       <h2>Catalogo de productos</h2>
-      <ItemList products={products} />
+      {category && <StyledCategory>{category.title}</StyledCategory>}
+      {items.length ? <ItemList items={items} /> : <h3>Loading...</h3>}
     </StyledContainer>
   );
 };

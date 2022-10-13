@@ -1,5 +1,9 @@
 import styled from "styled-components";
-import { StyledBlueButton, StyledButton } from "./StyledUtils.styled";
+import {
+  StyledBlueButton,
+  StyledButton,
+  StyledContainer,
+} from "./StyledUtils.styled";
 
 export const StyledFormBackground = styled.div`
   position: fixed;
@@ -75,7 +79,8 @@ export const StyledCheckoutButton = styled(StyledBlueButton)`
 `;
 
 export const StyledAuthError = styled.div`
-  position: absolute;
+  position: fixed;
+  z-index: 50;
   bottom: 1rem;
   left: 1rem;
   width: 100%;
@@ -121,4 +126,26 @@ export const StyledToggleRegisterButton = styled.button`
   color: ${({ theme }) => theme.colors.primary};
   font-size: 1rem;
   cursor: pointer;
+`;
+
+export const StyledAuthSuccess = styled(StyledAuthError)`
+  border-color: #03a523;
+  background-color: #19ff46;
+`;
+
+export const StyledUserProfileContainer = styled(StyledContainer)`
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+`;
+export const StyledUserInfoContainer = styled.div`
+  padding: 1rem;
+  width: 40%;
+`;
+
+export const StyledUserInfo = styled.div`
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
+  padding: 1rem;
 `;

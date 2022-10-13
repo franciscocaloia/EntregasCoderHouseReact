@@ -7,14 +7,21 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
   const { id } = useParams();
+
+  /*
+    Dentro de este useEffect se realiza el fetching de datos para mostrar 
+    la informacion completa del item utilizando los parametros del routing
+  */
+
   useEffect(() => {
     (async () => {
       const db = getFirestore();
       const itemRef = doc(db, "items", id);
-      const snapshot = await getDoc(itemRef);
-      setItem({ id: snapshot.id, ...snapshot.data() });
+      const docSnapshot = await getDoc(itemRef);
+      setItem({ id: docSnapshot.id, ...docSnapshot.data() });
     })();
   }, [id]);
+
   return (
     <StyledItemDetailContainer>
       {item ? <ItemDetail item={item} /> : <h3>Loading...</h3>}

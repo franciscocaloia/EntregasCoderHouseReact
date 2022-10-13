@@ -3,7 +3,7 @@ import { useCart } from "../../contexts/CartContext";
 import { StyledCartItem, StyledClearButton } from "../styled/StyledCart.styled";
 
 const CartItem = ({ item }) => {
-  const { name, units, price, img } = item;
+  const { name, units, price, img, valid } = item;
   const context = useCart();
   const onClick = () => {
     context.removeFromCart(item);
@@ -21,6 +21,9 @@ const CartItem = ({ item }) => {
       </div>
       <div className="unitsContainer">
         <span className="cartUnits">Unidades: {units}</span>
+      </div>
+      <div className="stockContainer">
+        {!valid && <span className="cartStock">Sin stock</span>}
       </div>
       <div className="buttonContainer">
         <StyledClearButton onClick={onClick}>x</StyledClearButton>

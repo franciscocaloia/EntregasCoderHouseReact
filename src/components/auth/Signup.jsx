@@ -2,6 +2,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import useInput from "../../hooks/inputHook";
 import {
   StyledAuthError,
+  StyledAuthSuccess,
   StyledCheckoutButton,
   StyledCloseFormButton,
   StyledForm,
@@ -13,8 +14,14 @@ import { StyledGridContainer } from "../styled/StyledUtils.styled";
 const Signup = () => {
   const inputNotEmpty = (value) => value.trim() !== "";
   const isEmail = (value) => value.includes("@");
-  const { signup, authError, showSignup, toggleSignup, toggleSignin } =
-    useAuth();
+  const {
+    signup,
+    authError,
+    authSuccess,
+    showSignup,
+    toggleSignup,
+    toggleSignin,
+  } = useAuth();
   const {
     value: firstName,
     inputError: firstNameError,
@@ -35,7 +42,7 @@ const Signup = () => {
     inputValid: phoneValid,
     inputChangeHandler: phoneChangeHandler,
     inputBlurHandler: phoneBlurHandler,
-  } = useInput(inputNotEmpty);
+  } = useInput((value) => value.match(/^[0-9]+$/));
   const {
     value: password,
     inputError: passwordError,
@@ -59,7 +66,7 @@ const Signup = () => {
   } = useInput((value) => inputNotEmpty(value) && isEmail(value));
   const handleSubmit = (event) => {
     event.preventDefault();
-    signup(email, password, firstName, phone);
+    signup(email, password, firstName, lastName, phone);
   };
   return (
     <>
@@ -81,7 +88,7 @@ const Signup = () => {
                   onBlur={firstNameBlurHandler}
                 />
                 {firstNameError && (
-                  <p className="textError">Ingrese un nombre valido</p>
+                  <p className="textError">Ingrese un nombre válido</p>
                 )}
               </StyledInputContainer>
               <StyledInputContainer>
@@ -97,7 +104,7 @@ const Signup = () => {
                   onBlur={lastNameBlurHandler}
                 />
                 {lastNameError && (
-                  <p className="textError">Ingrese un nombre valido</p>
+                  <p className="textError">Ingrese un apellido válido</p>
                 )}
               </StyledInputContainer>
               <StyledInputContainer>
@@ -112,7 +119,9 @@ const Signup = () => {
                   onBlur={phoneBlurHandler}
                 />
                 {phoneError && (
-                  <p className="textError">Ingrese un nombre valido</p>
+                  <p className="textError">
+                    El telefono solo debe contener números
+                  </p>
                 )}
               </StyledInputContainer>
               <StyledInputContainer>
@@ -128,7 +137,9 @@ const Signup = () => {
                   onBlur={emailBlurHandler}
                 />
                 {emailError && (
-                  <p className="textError">Ingrese un nombre valido</p>
+                  <p className="textError">
+                    El correo debe contener el caracter "@"
+                  </p>
                 )}
               </StyledInputContainer>
               <StyledInputContainer>
@@ -144,7 +155,7 @@ const Signup = () => {
                   onBlur={passwordBlurHandler}
                 />
                 {passwordError && (
-                  <p className="textError">Ingrese un nombre valido</p>
+                  <p className="textError">Ingrese una contraseña válida</p>
                 )}
               </StyledInputContainer>
               <StyledInputContainer>
@@ -160,7 +171,7 @@ const Signup = () => {
                   onBlur={passwordConfirmBlurHandler}
                 />
                 {passwordConfirmError && (
-                  <p className="textError">Ingrese un nombre valido</p>
+                  <p className="textError">Las contraseñas deben coincidir</p>
                 )}
               </StyledInputContainer>
             </StyledGridContainer>
@@ -168,6 +179,7 @@ const Signup = () => {
               disabled={
                 !(
                   firstNameValid &&
+                  lastNameValid &&
                   phoneValid &&
                   emailValid &&
                   passwordValid &&
@@ -198,9 +210,12 @@ const Signup = () => {
               x
             </StyledCloseFormButton>
           </StyledForm>
-          {authError && <StyledAuthError>{authError}</StyledAuthError>}
         </StyledFormBackground>
       )}
+      {authSuccess === "signup" && (
+        <StyledAuthSuccess>Cuenta registrada!</StyledAuthSuccess>
+      )}
+      {authError && <StyledAuthError>{authError}</StyledAuthError>}
     </>
   );
 };

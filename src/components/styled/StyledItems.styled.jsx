@@ -15,18 +15,30 @@ export const StyledItem = styled.div`
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  h2 {
+  .itemName {
     font-size: 1rem;
     margin: 1rem 2rem 0;
     color: #3a3a3a;
     text-transform: uppercase;
   }
-  span {
+  .itemPrice {
     position: absolute;
     bottom: 1rem;
     left: 2rem;
     color: #258fcb;
     font-size: 1.8rem;
+  }
+  .itemCart {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 1rem;
+    right: 2rem;
+    height: 2rem;
+    width: 2rem;
+    background-color: red;
+    border-radius: 100%;
   }
 `;
 
@@ -125,6 +137,7 @@ export const StyledItemDetail = styled.div`
   border-radius: 1rem;
   .itemDetailImg {
     width: 100%;
+    min-width: 20rem;
     border-bottom: 1px solid #ddd;
     display: flex;
     align-items: center;
@@ -155,7 +168,6 @@ export const StyledItemDetail = styled.div`
         text-align: center;
         width: 100%;
         padding: 1rem;
-        margin: 1rem 0;
         background-color: #fff;
         box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.25);
         border-radius: 0.5rem;
