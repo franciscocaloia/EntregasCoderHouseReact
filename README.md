@@ -1,6 +1,6 @@
 # Kloi**Arduino**
 
-El proyecto simula un ecommerce en donde se muestran algunas de las placas que ofrece arduino y una serie de sensores para complementarlas. Se implementó autenticación utilizando Firebase auth y el guardado de los datos se realiza mediante Cloud Firestore. El cart es persistente gracias a que se almacena en el localStorage por lo que no se pierde al recargar la página.
+El proyecto simula un ecommerce en donde se muestran algunas de las placas que ofrece arduino y una serie de sensores para complementarlas. Se implementó autenticación utilizando Firebase auth y el guardado de los datos se realiza mediante Cloud Firestore. El cart es persistente gracias a que se almacena en el localStorage por lo que no se pierde al recargar la página. El Styling de la página fue realizado con la libreria StyledComponents.
 
 ### User  Story
 
@@ -15,3 +15,17 @@ El proyecto simula un ecommerce en donde se muestran algunas de las placas que o
 **Busqueda de ordenes:** Muestra al usuario un input de texto que luego de recibir un ID de orden, muestra el detalle asociado al ID recibido. El detalle muestra información acerca de la fecha, los productos incluidos y el total de la compra, sin mostrar la información personal del usuario que la realizó.
 
 A continuación brindo una serie de GIF's que muestran la experiencia de uso de la aplicación.
+
+
+
+**Inicio de Sesión**<img src="./readmeAssets/login.gif" title="ahre" alt="" width="761">
+
+**Registro**<img title="ahre" src="./readmeAssets/register.gif" alt="" width="693">
+
+**Agregar productos al carro**<img title="ahre" src="./readmeAssets/addingProducts.gif" alt="" width="748">
+
+**Quitar productos del carro**<img title="ahre" src="./readmeAssets/clearingCart.gif" alt="" width="693">
+
+**Finalizar compra**<img title="ahre" src="./readmeAssets/checkout.gif" alt="" width="709">
+
+**Buscar orden**<img title="ahre" src="./readmeAssets/searchingOrder.gif" alt="" width="756">
