@@ -20,34 +20,34 @@ A continuación brindo una serie de GIF's que muestran la experiencia de uso de 
 
 
 
-**Inicio de Sesión**<img src="./readmeAssets/login.gif" title="ahre" alt="" width="761">
+**Inicio de Sesión**<img src="./readmeAssets/login.gif" title="ahre" alt="" width="700">
 
 
 
 **Registro**
 
-<img title="ahre" src="./readmeAssets/register.gif" alt="" width="682">
+<img title="ahre" src="./readmeAssets/register.gif" alt="" width="700">
 
 
 
 **Agregar productos al carro**
 
-<img title="ahre" src="./readmeAssets/addingProducts.gif" alt="" width="699">
+<img title="ahre" src="./readmeAssets/addingProducts.gif" alt="" width="700">
 
 
 
 **Quitar productos del carro**
 
-<img title="ahre" src="./readmeAssets/clearingCart.gif" alt="" width="669">
+<img title="ahre" src="./readmeAssets/clearingCart.gif" alt="" width="700">
 
 
 
 **Finalizar compra**
 
-<img title="ahre" src="./readmeAssets/checkout.gif" alt="" width="709">
+<img title="ahre" src="./readmeAssets/checkout.gif" alt="" width="700">
 
 
 
 **Buscar orden**
 
-<img title="ahre" src="./readmeAssets/searchingOrder.gif" alt="" width="756">
+<img title="ahre" src="./readmeAssets/searchingOrder.gif" alt="" width="700">
